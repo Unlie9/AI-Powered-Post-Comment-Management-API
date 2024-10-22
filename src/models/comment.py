@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from db.database import Base
+from src.db.database import Base
 
 
 class Comment(Base):
@@ -11,7 +11,6 @@ class Comment(Base):
 
     post_id = Column(Integer, ForeignKey("posts.id"))
     author_id = Column(Integer, ForeignKey("users.id"))
-
 
     post = relationship("Post", back_populates="comments")
     author = relationship("User", back_populates="comments")
